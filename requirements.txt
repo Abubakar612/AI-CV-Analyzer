@@ -1,0 +1,5 @@
+flask
+pdfplumber
+joblib
+scikit-learn
+pandas
