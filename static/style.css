@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI CV Analyzer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="landing">
+
+    <div class="top-section">
+        <div class="intro">
+            <h1>AI CV Analyzer & Candidate Ranking System</h1>
+            <p>
+                A smart recruitment support system that analyzes CVs, matches skills,
+                checks education, compares experience, and generates an AI-based suitability score.
+            </p>
+
+            <div class="features">
+                <div>Skill Matching</div>
+                <div>Experience Check</div>
+                <div>Degree Verification</div>
+                <div>AI Score Prediction</div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>How It Works</h2>
+            <p>Upload CVs in PDF format.</p>
+            <p>Enter job requirements.</p>
+            <p>System extracts CV data.</p>
+            <p>AI model predicts candidate score.</p>
+        </div>
+    </div>
+
+    <div class="mode-title">
+        <h2>Select Your Mode</h2>
+        <p>Choose how you want to use the system</p>
+    </div>
+
+    <div class="mode-selection">
+
+        <div class="mode-card">
+            <h2>Applicant Mode</h2>
+            <p>
+                Best for students and job seekers who want to check whether their CV
+                matches a specific job role.
+            </p>
+
+            <ul>
+                <li>Upload one CV</li>
+                <li>Check matched skills</li>
+                <li>View missing suitability areas</li>
+                <li>Get AI score and shortlist status</li>
+            </ul>
+
+            <button onclick="showApplicant()">Continue as Applicant</button>
+        </div>
+
+        <div class="mode-card recruiter">
+            <h2>Recruiter Mode</h2>
+            <p>
+                Best for HR teams and recruiters who want to upload multiple CVs
+                and rank candidates automatically.
+            </p>
+
+            <ul>
+                <li>Upload multiple CVs or ZIP file</li>
+                <li>Rank candidates by AI score</li>
+                <li>Compare skills and experience</li>
+                <li>Shortlist best candidates faster</li>
+            </ul>
+
+            <button onclick="showRecruiter()">Continue as Recruiter</button>
+        </div>
+
+    </div>
+
+    <div id="applicantForm" class="form-card" style="display:none;">
+        <h2>Applicant Mode</h2>
+        <p class="subtitle">Upload your CV and check your job suitability score.</p>
+
+        <form action="/applicant" method="POST" enctype="multipart/form-data">
+            <label>Upload Your CV PDF</label>
+            <input type="file" name="cv" accept=".pdf" required>
+
+            <label>Required Skills</label>
+            <input type="text" name="skills" placeholder="Python, ML, SQL, HTML5" required>
+
+            <label>Required Experience</label>
+            <input type="number" name="experience" placeholder="2" min="0" max="20" required>
+
+            <label>Required Degree</label>
+            <select name="degree" required>
+                <option value="BS">BS</option>
+                <option value="MS">MS</option>
+                <option value="PhD">PhD</option>
+            </select>
+
+            <label>Required Field</label>
+            <input type="text" name="field" placeholder="CS, IT, AI" required>
+
+            <button type="submit">Analyze My CV</button>
+        </form>
+    </div>
+
+    <div id="recruiterForm" class="form-card" style="display:none;">
+        <h2>Recruiter Mode</h2>
+        <p class="subtitle">Upload CVs and rank candidates based on job requirements.</p>
+
+        <form action="/recruiter" method="POST" enctype="multipart/form-data">
+            <label>Upload CVs or ZIP</label>
+            <input type="file" name="cvs" accept=".pdf,.zip" multiple required>
+
+            <label>Required Skills</label>
+            <input type="text" name="skills" placeholder="Python, ML, SQL, HTML5" required>
+
+            <label>Required Experience</label>
+            <input type="number" name="experience" placeholder="2" min="0" max="20" required>
+
+            <label>Required Degree</label>
+            <select name="degree" required>
+                <option value="BS">BS</option>
+                <option value="MS">MS</option>
+                <option value="PhD">PhD</option>
+            </select>
+
+            <label>Required Field</label>
+            <input type="text" name="field" placeholder="CS, IT, AI" required>
+
+            <button type="submit">Rank Candidates</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+function showApplicant() {
+    document.getElementById("applicantForm").style.display = "block";
+    document.getElementById("recruiterForm").style.display = "none";
+
+    document.getElementById("applicantForm").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function showRecruiter() {
+    document.getElementById("recruiterForm").style.display = "block";
+    document.getElementById("applicantForm").style.display = "none";
+
+    document.getElementById("recruiterForm").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+</script>
+
+</body>
+</html>
