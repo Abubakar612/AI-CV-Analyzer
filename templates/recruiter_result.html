@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recruiter Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container wide">
+
+    <h1>Recruiter Dashboard</h1>
+
+    <table>
+
+        <tr>
+            <th>Rank</th>
+            <th>Candidate</th>
+            <th>Skills</th>
+            <th>Skill %</th>
+            <th>Experience</th>
+            <th>Detected Degree</th>
+            <th>Required Degree</th>
+            <th>Degree Match</th>
+            <th>Field Match</th>
+            <th>AI Score</th>
+            <th>Status</th>
+        </tr>
+
+        {% for r in results %}
+
+        <tr>
+
+            <td>{{ loop.index }}</td>
+
+            <td>{{ r.Candidate }}</td>
+
+            <td>{{ r.Skills }}</td>
+
+            <td>{{ r.Skill_Percent }}%</td>
+
+            <td>{{ r.Experience }}</td>
+
+            <td>{{ r.Degree }}</td>
+
+            <td>{{ r.Required_Degree }}</td>
+
+            <td>{{ r.Degree_Match }}</td>
+
+            <td>{{ r.Field_Match }}</td>
+
+            <td>{{ r.AI_Score }}</td>
+
+            <td>
+                {% if "Shortlisted" in r.Status %}
+                    <span class="success">{{ r.Status }}</span>
+                {% else %}
+                    <span class="danger">{{ r.Status }}</span>
+                {% endif %}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="/" class="btn">Back to Home</a>
+
+</div>
+
+</body>
+</html>

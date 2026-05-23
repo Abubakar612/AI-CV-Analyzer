@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Applicant Report</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="report-wrapper">
+
+        <div class="report-header">
+            <h1>Applicant Report</h1>
+            <p>AI-powered CV analysis result</p>
+        </div>
+
+        <div class="applicant-report-card">
+
+            <div class="top-score-section">
+
+                <div class="candidate-box">
+                    <small>Candidate</small>
+                    <h2>{{ result.Candidate }}</h2>
+                </div>
+
+                <div class="score-circle">
+                    <h1>{{ result.AI_Score }}</h1>
+                    <p>AI Score</p>
+                </div>
+
+            </div>
+
+            <div class="report-grid">
+
+                <div class="report-item">
+                    <small>Matched Skills</small>
+                    <h3>{{ result.Skills }}</h3>
+                </div>
+
+                <div class="report-item">
+                    <small>Skill Match</small>
+                    <h3>{{ result.Skill_Percent }}%</h3>
+                </div>
+
+                <div class="report-item">
+                    <small>Experience</small>
+                    <h3>{{ result.Experience }} Years</h3>
+                </div>
+
+                <div class="report-item">
+                    <small>Detected Degree</small>
+                    <h3>{{ result.Degree }}</h3>
+                </div>
+
+                <div class="report-item">
+                    <small>Required Degree</small>
+                    <h3>{{ result.Required_Degree }}</h3>
+                </div>
+
+                <div class="report-item">
+                    <small>Degree Match</small>
+                    <h3>{{ result.Degree_Match }}</h3>
+                </div>
+
+                <div class="report-item">
+                    <small>Field Match</small>
+                    <h3>{{ result.Field_Match }}</h3>
+                </div>
+
+                <div class="report-item">
+                    <small>Status</small>
+
+                    {% if result.Status == "Shortlisted" %}
+                    <span class="badge success">Shortlisted</span>
+                    {% else %}
+                    <span class="badge danger">{{ result.Status }}</span>
+                    {% endif %}
+                </div>
+
+            </div>
+
+        </div>
+
+        <a href="/" class="btn">Back to Home</a>
+
+    </div>
+
+</body>
+
+</html>
